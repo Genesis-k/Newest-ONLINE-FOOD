@@ -1,0 +1,13 @@
+{
+    "editor.fontFamily": "Source code pro, monospace,",
+    "editor.fontLigatures": true,
+    "terminal.integrated.fontLigatures.enabled": true,
+    "editor.formatOnType": true,
+    "mdb.presetConnections": [
+        {
+            "name": "Preset Connection",
+            "connectionString": "mongodb://localhost:27017"
+        }
+    ],
+    "python.analysis.autoImportCompletions": true
+}
