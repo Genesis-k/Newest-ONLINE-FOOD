@@ -1,15 +1,33 @@
+import os
 from motor.motor_asyncio import AsyncIOMotorClient
-from config import MONGO_URI
 
+# Fetch MongoDB URI from Railway environment variables
+MONGO_URI = os.getenv("MONGO_URI")
+
+# Initialize MongoDB Client
 client = AsyncIOMotorClient(MONGO_URI)
 db = client["food_delivery"]
 
+foods_collection = db["foods"]
+categories_collection = db["categories"]
+orders_collection = db["orders"]
+users_collection = db["users"]
+
+
 async def get_db():
+    """Returns the database instance."""
     return db
 
 async def connect_to_mongo():
-    print("Connected to MongoDB")
- 
+    """Establish connection to MongoDB."""
+    try:
+        # Ensure the connection is established
+        await client.admin.command("ping")
+        print("Connected to MongoDB successfully.")
+    except Exception as e:
+        print(f"Error connecting to MongoDB: {e}")
+
 async def close_mongo_connection():
+    """Close MongoDB connection on shutdown."""
     client.close()
-    print("MongoDB connection closed")
+    print(" MongoDB connection closed.")

@@ -3,14 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Food delivery Website</title>
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-    <!-- Fontawesome CSS -->
-    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.css">
-    <!-- Hover CSS -->
-    <link rel="stylesheet" href="css/hover-min.css">
-    <!-- Custom CSS -->
+    <title>Online Food Delivery</title>
     <link rel="stylesheet" href="frontpage.css">
 </head>
 <body>
@@ -18,13 +11,11 @@
     <header class="navbar">
         <nav id="site-top-nav" class="navbar-menu navbar-fixed-top">
             <div class="container">
-                <!-- logo -->
                 <div class="logo">
-                    <a href="frontpage.html" title="Logo">
+                    <a href="frontpage.html">
                         <img src="images/logo.png" alt="Logo" class="img-responsive">
                     </a>
                 </div>
-                <!-- Main Menu -->
                 <div class="menu text-right">
                     <ul>
                         <li><a class="hvr-underline-from-center" href="frontpage.html">Home</a></li>
@@ -36,48 +27,31 @@
                         <li>
                             <a id="shopping-cart" class="shopping-cart">
                                 <i class="fa fa-cart-arrow-down"></i>
-                                <span class="badge">4</span>
+                                <span class="badge">0</span> <!-- Dynamically update cart count -->
                             </a>
                             <div id="cart-content" class="cart-content">
                                 <h3 class="text-center">Shopping Cart</h3>
                                 <table class="cart-table" border="0">
-                                    <tr>
-                                        <th>Food</th>
-                                        <th>Name</th>
-                                        <th>Price</th>
-                                        <th>Qty</th>
-                                        <th>Total</th>
-                                        <th>Action</th>
-                                    </tr>
-                                    <tr>
-                                        <td><img src="images/food/p1.jpg" alt="Food"></td>
-                                        <td>Pizza</td>
-                                        <td>Ksh.990</td>
-                                        <td>1</td>
-                                        <td>ksh.990</td>
-                                        <td><a href="#" class="btn-delete">&times;</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><img src="images/food/s1.jpg" alt="Food"></td>
-                                        <td>Sandwich</td>
-                                        <td>Ksh.270</td>
-                                        <td>1</td>
-                                        <td>Ksh.270</td>
-                                        <td><a href="#" class="btn-delete">&times;</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><img src="images/food/b1.jpg" alt="Food"></td>
-                                        <td>Burger</td>
-                                        <td>Ksh.370</td>
-                                        <td>1</td>
-                                        <td>Ksh.370</td>
-                                        <td><a href="#" class="btn-delete">&times;</a></td>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="4">Total</th>
-                                        <th>Ksh.1630</th>
-                                        <th></th>
-                                    </tr>
+                                    <thead>
+                                        <tr>
+                                            <th>Food</th>
+                                            <th>Name</th>
+                                            <th>Price</th>
+                                            <th>Qty</th>
+                                            <th>Total</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="cart-items">
+                                        <!-- Cart items will be dynamically added here -->
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th colspan="4">Total</th>
+                                            <th id="cart-total">Ksh.0</th>
+                                            <th></th>
+                                        </tr>
+                                    </tfoot>
                                 </table>
                                 <a href="order.html" class="btn-primary">Confirm Order</a>
                             </div>
@@ -94,113 +68,100 @@
         <div class="container">
             <h2 class="text-center">Fill this form to confirm your order.</h2>
             <table class="tbl-full" border="0">
-                <tr>
-                    <th>S.N.</th>
-                    <th>Food</th>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Qty</th>
-                    <th>Total</th>
-                    <th>Action</th>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td><img src="images/food/p1.jpg" alt="Food"></td>
-                    <td>Pizza</td>
-                    <td>$ 8.00</td>
-                    <td>1</td>
-                    <td>$ 8.00</td>
-                    <td><a href="#" class="btn-delete">&times;</a></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td><img src="images/food/s1.jpg" alt="Food"></td>
-                    <td>Sandwich</td>
-                    <td>$ 8.00</td>
-                    <td>1</td>
-                    <td>$ 8.00</td>
-                    <td><a href="#" class="btn-delete">&times;</a></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td><img src="images/food/b1.jpg" alt="Food"></td>
-                    <td>Burger</td>
-                    <td>$ 8.00</td>
-                    <td>1</td>
-                    <td>$ 8.00</td>
-                    <td><a href="#" class="btn-delete">&times;</a></td>
-                </tr>
-                <tr>
-                    <th colspan="5">Total</th>
-                    <th>$24.00</th>
-                    <th></th>
-                </tr>
+                <thead>
+                    <tr>
+                        <th>S.N.</th>
+                        <th>Food</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Qty</th>
+                        <th>Total</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="order-items">
+                    <!-- Order items will be dynamically added here -->
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="5">Total</th>
+                        <th id="order-total">Ksh.0</th>
+                        <th></th>
+                    </tr>
+                </tfoot>
             </table>
-            <form action="" class="form">
+            <form action="" method="POST" class="form" id="order-form">
                 <fieldset>
                     <legend>Delivery Details</legend>
-                    <p class="label">Full Name</p>
-                    <input type="text" placeholder="Enter your name..." required>
-                    <p class="label">Phone Number</p>
-                    <input type="contact" placeholder="Enter your phone..." required>
-                    <p class="label">Email</p>
-                    <input type="email" placeholder="Enter your email..." required>
-                    <p class="label">Address</p>
-                    <input type="text" placeholder="Enter your address..." required>
+                    <label for="full-name">Full Name</label>
+                    <input type="text" id="full-name" name="full_name" placeholder="Enter your name..." required>
+
+                    <label for="phone-number">Phone Number</label>
+                    <input type="tel" id="phone-number" name="phone" placeholder="Enter your phone..." required>
+
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email..." required>
+
+                    <label for="address">Address</label>
+                    <input type="text" id="address" name="address" placeholder="Enter your address..." required>
+
                     <input type="submit" value="Confirm Order" class="btn-primary">
                 </fieldset>
             </form>
         </div>
     </section>
     <!-- Food Order Section End -->
-     
-        <!-- Footer Section Start -->
-        <section class="footer">
-            <div class="container">
-                <div class="grid-3">
-                    <div class="text-center">
-                        <h3>About Us</h3><br>
-                        <p>Welcome to Food Restaurant, your go-to online food delivery service dedicated to bringing delicious, high quality meals straight to your doorstep.<br>
-                            We partner with our chefs to offer a diverse menu including pizzas, burgers,sandwiches and more; freshly prepared and delivered hot and fast.<br><b>Our misson</b> is to make food ordering seamless, convinient and enjoyable.
-                            With real-time-tracking, secure payment and excellent customer service, we ensure a hassle-free experience every time you order.<br>
-                            Whether you are craving a quick bite or a full meal,Food Restaurant is here to serve you. Order now and enjoy great food anytime, anywhere!</p>
+
+    <!-- Footer Section Start -->
+    <section class="footer">
+        <div class="container">
+            <div class="grid-3">
+                <div class="text-center">
+                    <h3>About Us</h3><br>
+                    <p>Welcome to Food Restaurant, your go-to online food delivery service dedicated to bringing delicious, high-quality meals straight to your doorstep. 
+                        We partner with chefs to offer a diverse menu including pizzas, burgers, sandwiches, and more; freshly prepared and delivered hot and fast. 
+                        <b>Our mission</b> is to make food ordering seamless, convenient, and enjoyable. 
+                        With real-time tracking, secure payment, and excellent customer service, we ensure a hassle-free experience every time you order. 
+                        Whether you are craving a quick bite or a full meal, Food Restaurant is here to serve you. Order now and enjoy great food anytime, anywhere!</p>
+                </div>
+                <div class="text-center">
+                    <h3>Site Map</h3><br>
+                    <div class="site-links">
+                        <a href="categories.html">Categories</a>
+                        <a href="foods.html">Foods</a>
+                        <a href="order.html">Order</a>
+                        <a href="contact.html">Contact</a>
+                        <a href="login.html">Login</a>
                     </div>
-                    <div class="text-center">
-                        <h3>Site Map</h3><br>
-                        <div class="site-links">
-                            <a href="categories.html">Categories</a>
-                            <a href="foods.html">Foods</a>
-                            <a href="order.html">Order</a>
-                            <a href="contact.html">Contact</a>
-                            <a href="login.html">Login</a>
-                        </div>
-                    </div>
-                    <div class="social-links">
-                        <h3>Social Links</h3><br>
-                        <div class="social">
-                            <ul>
-                                <li><a href=""><img src="https://img.icons8.com/color/48/null/facebook-new.png"/></a></li>
-                                <li><a href=""><img src="https://img.icons8.com/fluency/48/null/instagram-new.png"/></a></li>
-                                <li><a href=""><img src="https://img.icons8.com/color/48/null/twitter--v1.png"/></a></li>
-                                <li><a href=""><img src="https://img.icons8.com/color/48/null/linkedin-circled--v1.png"/></a></li>
-                                <li><a href=""><img src="https://img.icons8.com/color/48/null/youtube-play.png"/></a></li>
-                            </ul>
-                        </div>
+                </div>
+                <div class="social-links">
+                    <h3>Social Links</h3><br>
+                    <div class="social">
+                        <ul>
+                            <li><a href="#"><img src="https://img.icons8.com/color/48/facebook-new.png"/></a></li>
+                            <li><a href="#"><img src="https://img.icons8.com/fluency/48/instagram-new.png"/></a></li>
+                            <li><a href="#"><img src="https://img.icons8.com/color/48/twitter--v1.png"/></a></li>
+                            <li><a href="#"><img src="https://img.icons8.com/color/48/linkedin-circled--v1.png"/></a></li>
+                            <li><a href="#"><img src="https://img.icons8.com/color/48/youtube-play.png"/></a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </section>
-        <!-- Footer Section End -->
-    
-        <!-- Copyright Section start -->
-        <section class="copyright">
-            <div class="container text-center">
-                <p>All rights reserved. Design By <a href="#">Genesis Kagiri</a></p>
-            </div>
-            <a id="back-to-top" class="btn-primary">
-                <i class="fa fa-angle-double-up"></i>
-            </a>
-        </section>
-        <!-- Copyright Section End -->
+        </div>
+    </section>
+    <!-- Footer Section End -->
+
+    <!-- Copyright Section start -->
+    <section class="copyright">
+        <div class="container text-center">
+            <p>All rights reserved. Designed by <a href="#">Genesis Kagiri</a></p>
+        </div>
+        <a id="back-to-top" class="btn-primary">
+            <i class="fa fa-angle-double-up"></i>
+        </a>
+    </section>
+    <!-- Copyright Section End -->
+
+    <script src="order.js"></script> <!-- JavaScript for dynamic cart and order management -->
 </body>
 </html>

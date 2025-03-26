@@ -3,81 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Food delivery Website</title>
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-    <!-- Fontawesome CSS -->
-    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.css">
-    <!-- Hover CSS -->
-    <link rel="stylesheet" href="css/hover-min.css">
+    <title>Online Food Delivery Website</title>
     <!-- Custom CSS -->
     <link rel="stylesheet" href="frontpage.css">
 </head>
 <body>
-    <!-- Navigation Section Start -->
+    <!-- Navigation Section -->
     <header class="navbar">
         <nav id="site-top-nav" class="navbar-menu navbar-fixed-top">
             <div class="container">
-                <!-- logo -->
+                <!-- Logo -->
                 <div class="logo">
-                    <a href="frontpage.html" title="Logo">
+                    <a href="frontpage.html">
                         <img src="images/logo.png" alt="Logo" class="img-responsive">
                     </a>
                 </div>
                 <!-- Main Menu -->
                 <div class="menu text-right">
                     <ul>
-                        <li><a class="hvr-underline-from-center" href="frontpage.html">Home</a></li>
-                        <li><a class="hvr-underline-from-center" href="categories.html">Categories</a></li>
-                        <li><a class="hvr-underline-from-center" href="foods.html">Foods</a></li>
-                        <li><a class="hvr-underline-from-center" href="order.html">Order</a></li>
-                        <li><a class="hvr-underline-from-center" href="contact.html">Contact</a></li>
-                        <li><a class="hvr-underline-from-center" href="login.html">Login</a></li>
+                        <li><a href="frontpage.html">Home</a></li>
+                        <li><a href="categories.html">Categories</a></li>
+                        <li><a href="foods.html">Foods</a></li>
+                        <li><a href="order.html">Order</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="login.html">Login</a></li>
                         <li>
-                            <a id="shopping-cart" class="shopping-cart">
-                                <i class="fa fa-cart-arrow-down"></i>
-                                <span class="badge">4</span>
-                            </a>
+                            <div id="shopping-cart">
+                                <a href="#" class="cart-icon">
+                                    <i class="fa fa-cart-arrow-down"></i>
+                                    <span id="cart-count">0</span>
+                                </a>
+                            </div>
                             <div id="cart-content" class="cart-content">
                                 <h3 class="text-center">Shopping Cart</h3>
-                                <table class="cart-table" border="0">
-                                    <tr>
-                                        <th>Food</th>
-                                        <th>Name</th>
-                                        <th>Price</th>
-                                        <th>Qty</th>
-                                        <th>Total</th>
-                                        <th>Action</th>
-                                    </tr>
-                                    <tr>
-                                        <td><img src="images/food/p1.jpg" alt="Food"></td>
-                                        <td>Pizza</td>
-                                        <td>Ksh.990</td>
-                                        <td>1</td>
-                                        <td>ksh.990</td>
-                                        <td><a href="#" class="btn-delete">&times;</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><img src="images/food/s1.jpg" alt="Food"></td>
-                                        <td>Sandwich</td>
-                                        <td>Ksh.270</td>
-                                        <td>1</td>
-                                        <td>Ksh.270</td>
-                                        <td><a href="#" class="btn-delete">&times;</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><img src="images/food/b1.jpg" alt="Food"></td>
-                                        <td>Burger</td>
-                                        <td>Ksh.370</td>
-                                        <td>1</td>
-                                        <td>Ksh.370</td>
-                                        <td><a href="#" class="btn-delete">&times;</a></td>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="4">Total</th>
-                                        <th>Ksh.1630</th>
-                                        <th></th>
-                                    </tr>
+                                <table class="cart-table">
+                                    <tbody id="cart-items"></tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th colspan="4">Total</th>
+                                            <th id="cart-total">Ksh.0</th>
+                                            <th></th>
+                                        </tr>
+                                    </tfoot>
                                 </table>
                                 <a href="order.html" class="btn-primary">Confirm Order</a>
                             </div>
@@ -87,169 +54,61 @@
             </div>
         </nav>
     </header>
-    <!-- Navigation Section End -->
 
-    <!-- Food Search Section Start -->
-    <section class="food-search text-center" >
+    <!-- Food Search Section -->
+    <section class="food-search text-center">
         <div class="container">
-            <h2 style="background: #3B82F6;">Foods on <a href="#" class="text-white">"Pizza"</a></h2>
+            <h2>Foods on <a href="#" class="text-white">"{{ selected_category }}"</a></h2>
         </div>
     </section>
-    <!-- Food Search Section End -->
 
-    <!--food section starts-->
+    <!-- Food Menu Section -->
     <section class="food-menu">
         <div class="container">
             <h2 class="text-center">Food Menu</h2>
             <div class="heading-border"></div>
-    
-            <div class="grid-2">
-                <!-- Main Dishes -->
-                <div class="food-menu-box">
-                    <form action="">
-                        <div class="food-menu-img">
-                            <img src="images/category/main dishes/burger.jpg" class="img-responsive img-curve">
-                        </div>
-                        <div class="food-menu-desc">
-                            <h4>Beef Burger</h4>
-                            <p class="food-price">Ksh.500</p>
-                            <p class="food-details">Juicy grilled beef patty, lettuce, tomato, and cheese in a sesame bun.</p>
-                            <input type="number" min="1">
-                            <input type="submit" class="btn-primary" value="Add to cart">
-                        </div>
-                    </form>
-                </div>
-    
-                <div class="food-menu-box">
-                    <form action="">
-                        <div class="food-menu-img">
-                            <img src="images/category/main dishes/pizza.jpg" class="img-responsive img-curve">
-                        </div>
-                        <div class="food-menu-desc">
-                            <h4>Margherita Pizza</h4>
-                            <p class="food-price">Ksh.900 (Medium) / Ksh.1,200 (Large)</p>
-                            <p class="food-details">Classic cheese and tomato pizza with fresh basil.</p>
-                            <input type="number" min="1">
-                            <input type="submit" class="btn-primary" value="Add to cart">
-                        </div>
-                    </form>
-                </div>
-    
-                <!-- Appetizers & Starters -->
-                <div class="food-menu-box">
-                    <form action="">
-                        <div class="food-menu-img">
-                            <img src="images/category/appetizers & starters/chicken nuggets fries and wedges.jpg" class="img-responsive img-curve">
-                        </div>
-                        <div class="food-menu-desc">
-                            <h4>Chicken nuggets, French fries and Potato wedges</h4>
-                            <p class="food-price">Ksh.550</p>
-                            <p class="food-details">Crispy golden fries and potato wedges served with ketchup and nuggets.</p>
-                            <input type="number" min="1">
-                            <input type="submit" class="btn-primary" value="Add to cart">
-                        </div>
-                    </form>
-                </div>
-    
-                <!-- Breakfast & Brunch -->
-                <div class="food-menu-box">
-                    <form action="">
-                        <div class="food-menu-img">
-                            <img src="images/category/breakfast & brunch/pancakes.jpg" class="img-responsive img-curve">
-                        </div>
-                        <div class="food-menu-desc">
-                            <h4>Pancakes & Syrup</h4>
-                            <p class="food-price">Ksh.400</p>
-                            <p class="food-details">Fluffy pancakes served with honey or maple syrup.</p>
-                            <input type="number" min="1">
-                            <input type="submit" class="btn-primary" value="Add to cart">
-                        </div>
-                    </form>
-                </div>
-    
-                <!-- Beverages -->
-                <div class="food-menu-box">
-                    <form action="">
-                        <div class="food-menu-img">
-                            <img src="images/category/beverages/plastic coke.jpg" class="img-responsive img-curve">
-                        </div>
-                        <div class="food-menu-desc">
-                            <h4>Soft Drinks</h4>
-                            <p class="food-price">Ksh.150</p>
-                            <p class="food-details">Coca-Cola, Fanta, Sprite, Pepsi.</p>
-                            <input type="number" min="1">
-                            <input type="submit" class="btn-primary" value="Add to cart">
-                        </div>
-                    </form>
-                </div>
-    
-                <div class="food-menu-box">
-                    <form action="">
-                        <div class="food-menu-img">
-                            <img src="images/category/beverages/mango juice.jpg" class="img-responsive img-curve">
-                        </div>
-                        <div class="food-menu-desc">
-                            <h4>Fresh Juices</h4>
-                            <p class="food-price">Ksh.350</p>
-                            <p class="food-details">Choice of Orange, Mango, Mixed Berry.</p>
-                            <input type="number" min="1">
-                            <input type="submit" class="btn-primary" value="Add to cart">
-                        </div>
-                    </form>
-                </div>
-    
+            <div id="food-list" class="grid-2">
+                <!-- Food items will be inserted here dynamically -->
             </div>
         </div>
     </section>
-    
-    <!--food section ended-->
-        <!-- Footer Section Start -->
-        <section class="footer">
-            <div class="container">
-                <div class="grid-3">
-                    <div class="text-center">
-                        <h3>About Us</h3><br>
-                        <p>Welcome to Food Restaurant, your go-to online food delivery service dedicated to bringing delicious, high quality meals straight to your doorstep.<br>
-                            We partner with our chefs to offer a diverse menu including pizzas, burgers,sandwiches and more; freshly prepared and delivered hot and fast.<br><b>Our misson</b> is to make food ordering seamless, convinient and enjoyable.
-                            With real-time-tracking, secure payment and excellent customer service, we ensure a hassle-free experience every time you order.<br>
-                            Whether you are craving a quick bite or a full meal,Food Restaurant is here to serve you. Order now and enjoy great food anytime, anywhere!</p>
-                    </div>
-                    <div class="text-center">
-                        <h3>Site Map</h3><br>
-                        <div class="site-links">
-                            <a href="categories.html">Categories</a>
-                            <a href="foods.html">Foods</a>
-                            <a href="order.html">Order</a>
-                            <a href="contact.html">Contact</a>
-                            <a href="login.html">Login</a>
-                        </div>
-                    </div>
-                    <div class="social-links">
-                        <h3>Social Links</h3><br>
-                        <div class="social">
-                            <ul>
-                                <li><a href=""><img src="https://img.icons8.com/color/48/null/facebook-new.png"/></a></li>
-                                <li><a href=""><img src="https://img.icons8.com/fluency/48/null/instagram-new.png"/></a></li>
-                                <li><a href=""><img src="https://img.icons8.com/color/48/null/twitter--v1.png"/></a></li>
-                                <li><a href=""><img src="https://img.icons8.com/color/48/null/linkedin-circled--v1.png"/></a></li>
-                                <li><a href=""><img src="https://img.icons8.com/color/48/null/youtube-play.png"/></a></li>
-                            </ul>
-                        </div>
+
+    <!-- Footer Section -->
+    <section class="footer">
+        <div class="container">
+            <div class="grid-3">
+                <div class="text-center">
+                    <h3>About Us</h3>
+                    <p>Welcome to Food Restaurant, your go-to online food delivery service dedicated to bringing delicious, high quality meals straight to your doorstep.<br>
+                        We partner with our chefs to offer a diverse menu including pizzas, burgers,sandwiches and more; freshly prepared and delivered hot and fast.<br><b>Our misson</b> is to make food ordering seamless, convinient and enjoyable.
+                        With real-time-tracking, secure payment and excellent customer service, we ensure a hassle-free experience every time you order.<br>
+                        Whether you are craving a quick bite or a full meal,Food Restaurant is here to serve you. Order now and enjoy great food anytime, anywhere!</p>
+                </div>
+                <div class="text-center">
+                    <h3>Site Map</h3>
+                    <div class="site-links">
+                        <a href="categories.html">Categories</a>
+                        <a href="foods.html">Foods</a>
+                        <a href="order.html">Order</a>
+                        <a href="contact.html">Contact</a>
+                        <a href="login.html">Login</a>
                     </div>
                 </div>
             </div>
-        </section>
-        <!-- Footer Section End -->
-    
-        <!-- Copyright Section start -->
-        <section class="copyright">
-            <div class="container text-center">
-                <p>All rights reserved. Design By <a href="#">Genesis Kagiri</a></p>
-            </div>
-            <a id="back-to-top" class="btn-primary">
-                <i class="fa fa-angle-double-up"></i>
-            </a>
-        </section>
-        <!-- Copyright Section End -->
+        </div>
+    </section>
+
+    <!-- Copyright Section -->
+    <section class="copyright">
+        <div class="container text-center">
+            <p>All rights reserved. Designed by <a href="#">Genesis Kagiri</a></p>
+        </div>
+        <a id="back-to-top" class="btn-primary">
+            <i class="fa fa-angle-double-up"></i>
+        </a>
+    </section>
+
+    <!-- JavaScript -->
+    <script src= "category-foods.js"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr
 from typing import Optional, List
 from datetime import datetime, timezone
 
@@ -28,3 +28,11 @@ class UserInDB(BaseModel):
     email: str
     full_name: Optional[str] = None
     hashed_password: str
+
+
+class ContactForm(BaseModel):
+    name: str
+    email: EmailStr
+    phone: str
+    subject: str
+    message: str

@@ -3,22 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Food delivery Website</title>
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-    <!-- Fontawesome CSS -->
-    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.css">
-    <!-- Hover CSS -->
-    <link rel="stylesheet" href="css/hover-min.css">
+    <title>Online Food Delivery Website</title>
     <!-- Custom CSS -->
     <link rel="stylesheet" href="frontpage.css">
 </head>
 <body>
+
     <!-- Navigation Section Start -->
     <header class="navbar">
         <nav id="site-top-nav" class="navbar-menu navbar-fixed-top">
             <div class="container">
-                <!-- logo -->
+                <!-- Logo -->
                 <div class="logo">
                     <a href="frontpage.html" title="Logo">
                         <img src="images/logo.png" alt="Logo" class="img-responsive">
@@ -50,15 +45,15 @@
                                         <th>Action</th>
                                     </tr>
                                     <tr>
-                                        <td><img src="images/food/p1.jpg" alt="Food"></td>
+                                        <td><img src="images/food/p1.jpg" alt="Pizza"></td>
                                         <td>Pizza</td>
                                         <td>Ksh.990</td>
                                         <td>1</td>
-                                        <td>ksh.990</td>
+                                        <td>Ksh.990</td>
                                         <td><a href="#" class="btn-delete">&times;</a></td>
                                     </tr>
                                     <tr>
-                                        <td><img src="images/food/s1.jpg" alt="Food"></td>
+                                        <td><img src="images/food/s1.jpg" alt="Sandwich"></td>
                                         <td>Sandwich</td>
                                         <td>Ksh.270</td>
                                         <td>1</td>
@@ -66,7 +61,7 @@
                                         <td><a href="#" class="btn-delete">&times;</a></td>
                                     </tr>
                                     <tr>
-                                        <td><img src="images/food/b1.jpg" alt="Food"></td>
+                                        <td><img src="images/food/b1.jpg" alt="Burger"></td>
                                         <td>Burger</td>
                                         <td>Ksh.370</td>
                                         <td>1</td>
@@ -90,60 +85,76 @@
     <!-- Navigation Section End -->
 
     <!-- Food Search Section Start -->
-    <section class="food-search text-center" >
-        <div class="container">
-            <h2 style="background: #3B82F6;">Foods on you search <a href="#" class="text-white">"Pizza"</a></h2>
-        </div>
-    </section>
+<section class="food-search text-center">
+    <div class="container">
+        <h2 style="background: #3B82F6; color: white; padding: 10px;">
+            Foods based on your search for: <span id="search-query" class="text-white"></span>
+        </h2>
+        <div id="food-results" class="food-list"></div>
+    </div>
+</section>
+<!-- Food Search Section End -->
+
+<!-- Link External JavaScript -->
+<script src="search.js"></script>
+
     <!-- Food Search Section End -->
 
-        <!-- Footer Section Start -->
-        <section class="footer">
-            <div class="container">
-                <div class="grid-3">
-                    <div class="text-center">
-                        <h3>About Us</h3><br>
-                        <p>Welcome to Food Restaurant, your go-to online food delivery service dedicated to bringing delicious, high quality meals straight to your doorstep.<br>
-                            We partner with our chefs to offer a diverse menu including pizzas, burgers,sandwiches and more; freshly prepared and delivered hot and fast.<br><b>Our misson</b> is to make food ordering seamless, convinient and enjoyable.
-                            With real-time-tracking, secure payment and excellent customer service, we ensure a hassle-free experience every time you order.<br>
-                            Whether you are craving a quick bite or a full meal,Food Restaurant is here to serve you. Order now and enjoy great food anytime, anywhere!</p>
+    <!-- Footer Section Start -->
+    <section class="footer">
+        <div class="container">
+            <div class="grid-3">
+                <div class="text-center">
+                    <h3>About Us</h3><br>
+                    <p>
+                        Welcome to Food Restaurant, your go-to online food delivery service dedicated to bringing delicious, 
+                        high-quality meals straight to your doorstep. <br> 
+                        We partner with our chefs to offer a diverse menu including pizzas, burgers, sandwiches, and more— 
+                        freshly prepared and delivered hot and fast. <br>
+                        <b>Our mission</b> is to make food ordering seamless, convenient, and enjoyable. 
+                        With real-time tracking, secure payment, and excellent customer service, we ensure a hassle-free 
+                        experience every time you order. <br>
+                        Whether you're craving a quick bite or a full meal, Food Restaurant is here to serve you. 
+                        Order now and enjoy great food anytime, anywhere!
+                    </p>
+                </div>
+                <div class="text-center">
+                    <h3>Site Map</h3><br>
+                    <div class="site-links">
+                        <a href="categories.html">Categories</a>
+                        <a href="foods.html">Foods</a>
+                        <a href="order.html">Order</a>
+                        <a href="contact.html">Contact</a>
+                        <a href="login.html">Login</a>
                     </div>
-                    <div class="text-center">
-                        <h3>Site Map</h3><br>
-                        <div class="site-links">
-                            <a href="categories.html">Categories</a>
-                            <a href="foods.html">Foods</a>
-                            <a href="order.html">Order</a>
-                            <a href="contact.html">Contact</a>
-                            <a href="login.html">Login</a>
-                        </div>
-                    </div>
-                    <div class="social-links">
-                        <h3>Social Links</h3><br>
-                        <div class="social">
-                            <ul>
-                                <li><a href=""><img src="https://img.icons8.com/color/48/null/facebook-new.png"/></a></li>
-                                <li><a href=""><img src="https://img.icons8.com/fluency/48/null/instagram-new.png"/></a></li>
-                                <li><a href=""><img src="https://img.icons8.com/color/48/null/twitter--v1.png"/></a></li>
-                                <li><a href=""><img src="https://img.icons8.com/color/48/null/linkedin-circled--v1.png"/></a></li>
-                                <li><a href=""><img src="https://img.icons8.com/color/48/null/youtube-play.png"/></a></li>
-                            </ul>
-                        </div>
+                </div>
+                <div class="social-links">
+                    <h3>Social Links</h3><br>
+                    <div class="social">
+                        <ul>
+                            <li><a href="#"><img src="https://img.icons8.com/color/48/facebook-new.png"/></a></li>
+                            <li><a href="#"><img src="https://img.icons8.com/fluency/48/instagram-new.png"/></a></li>
+                            <li><a href="#"><img src="https://img.icons8.com/color/48/twitter--v1.png"/></a></li>
+                            <li><a href="#"><img src="https://img.icons8.com/color/48/linkedin-circled--v1.png"/></a></li>
+                            <li><a href="#"><img src="https://img.icons8.com/color/48/youtube-play.png"/></a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </section>
-        <!-- Footer Section End -->
-    
-        <!-- Copyright Section start -->
-        <section class="copyright">
-            <div class="container text-center">
-                <p>All rights reserved. Design By <a href="#">Genesis Kagiri</a></p>
-            </div>
-            <a id="back-to-top" class="btn-primary">
-                <i class="fa fa-angle-double-up"></i>
-            </a>
-        </section>
-        <!-- Copyright Section End -->
+        </div>
+    </section>
+    <!-- Footer Section End -->
+
+    <!-- Copyright Section Start -->
+    <section class="copyright">
+        <div class="container text-center">
+            <p>All rights reserved. Designed by <a href="#">Genesis Kagiri</a></p>
+        </div>
+        <a id="back-to-top" class="btn-primary">
+            <i class="fa fa-angle-double-up"></i>
+        </a>
+    </section>
+    <!-- Copyright Section End -->
+
 </body>
 </html>
