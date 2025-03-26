@@ -1,12 +1,11 @@
-import os
 from motor.motor_asyncio import AsyncIOMotorClient
-
+import certifi
 
 # Fetch MongoDB URI from Railway environment variables
-MONGO_URI = os.getenv("MONGO_URI")
+MONGO_URI = "mongodb+srv://nyaguthiegenesis:onlinefooddel@cluster1.ycun0.mongodb.net/food_delivery?retryWrites=true&w=majority&appName=Cluster1"
 
 # Initialize MongoDB Client
-client = AsyncIOMotorClient(MONGO_URI)
+client = AsyncIOMotorClient(MONGO_URI, tlsCAFile=certifi.where())
 db = client["food_delivery"]
 
 foods_collection = db["foods"]
