@@ -1,37 +1,49 @@
-from fastapi import APIRouter, HTTPException, UploadFile, File, Depends
-from models import Food
-from database import foods_collection
-from google.cloud import storage
-import os
+from fastapi import APIRouter, HTTPException, Query, UploadFile, File
+from database import db, foods_collection
+from utils import upload_image_to_gcs
 
-router = APIRouter()
+router = APIRouter(prefix="/api/foods", tags=["foods"])
 
-# **Google Cloud Storage Configuration**
-BUCKET_NAME = "your-google-cloud-bucket-name"
-storage_client = storage.Client()
-bucket = storage_client.bucket(BUCKET_NAME)
-
-# **Upload Image to Google Cloud**
-async def upload_image_to_gcs(file: UploadFile):
-    blob = bucket.blob(f"food_images/{file.filename}")
-    blob.upload_from_file(file.file, content_type=file.content_type)
-    return blob.public_url
-
-# **Add Food**
-@router.post("/api/foods")
-async def add_food(name: str, price: float, category: str, description: str, file: UploadFile = File(...)):
-    image_url = await upload_image_to_gcs(file)
-    food_data = Food(name=name, price=price, category=category, image_url=image_url, description=description)
-    await foods_collection.insert_one(food_data.dict(by_alias=True))
-    return {"message": "Food item added successfully"}
-
-# **Get Foods**
-@router.get("/api/foods")
-async def get_foods(category: str = None):
+# Get all foods or filter by category
+@router.get("/")
+async def get_foods(category: int = Query(None)):
     query = {"category": category} if category else {}
-    foods = await foods_collection.find(query).to_list(None)
-    
+    foods = await foods_collection.find(query, {"_id": 1, "name": 1, "price": 1, "image": 1, "description": 1}).to_list(None)
+
+    # Convert ObjectId to string
     for food in foods:
         food["_id"] = str(food["_id"])
 
     return foods
+
+# Search foods by name
+@router.get("/search")
+async def search_foods(query: str = Query(...)):
+    regex_query = {"name": {"$regex": query, "$options": "i"}}
+    foods = await foods_collection.find(regex_query, {"_id": 1, "name": 1, "price": 1, "image": 1, "description": 1}).to_list(None)
+
+    # Convert ObjectId to string
+    for food in foods:
+        food["_id"] = str(food["_id"])
+
+    return foods
+
+# Add a new food item
+@router.post("/")
+async def add_food (name: str, price: float, category: str, description: str, image: UploadFile = File(...)):
+    """Uploads food item with image to GCS and saves it in MongoDB."""
+    try:
+        image_url = upload_image_to_gcs(image.file, f"foods/image.filename")
+        
+        food_data = {
+            "name": name,
+            "price": price,
+            "category": category,
+            "description": description,
+            "image": image_url
+        }
+        result = await db.foods.insert_one(food_data)
+
+        return {"message": "Food item added", "id": str(result.inserted_id), "image_url": image_url}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
