@@ -8,3 +8,4 @@ passlib
 python-jose
 pyjwt
 requests
+google-cloud-storage

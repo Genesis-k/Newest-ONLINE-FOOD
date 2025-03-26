@@ -1,22 +1,10 @@
-from fastapi import APIRouter, HTTPException, Depends
-from database import db
+from fastapi import APIRouter, Depends
+from database import get_db
+from fastapi.security import OAuth2PasswordBearer
 
 router = APIRouter()
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth/login")
 
-@router.post("/api/users/register")
-async def register_user(user: dict):
-    existing_user = await db.users.find_one({"email": user["email"]})
-    if existing_user:
-        raise HTTPException(status_code=400, detail="User already exists")
-    
-    new_user = await db.users.insert_one(user)
-    return {"message": "User registered successfully", "user_id": str(new_user.inserted_id)}
-
-@router.get("/api/users")
-async def get_users():
-    users = await db.users.find({}, {"_id": 1, "name": 1, "email": 1}).to_list(None)
-
-    for user in users:
-        user["_id"] = str(user["_id"])
-
-    return users
+@router.get("/users/me")
+async def get_current_user(token: str = Depends(oauth2_scheme)):
+    return {"message": "User authenticated", "token": token}

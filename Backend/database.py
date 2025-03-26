@@ -1,6 +1,7 @@
 import os
 from motor.motor_asyncio import AsyncIOMotorClient
 
+
 # Fetch MongoDB URI from Railway environment variables
 MONGO_URI = os.getenv("MONGO_URI")
 
@@ -9,9 +10,9 @@ client = AsyncIOMotorClient(MONGO_URI)
 db = client["food_delivery"]
 
 foods_collection = db["foods"]
-categories_collection = db["categories"]
 orders_collection = db["orders"]
 users_collection = db["users"]
+deliveries_collection = db["deliveries"]
 
 
 async def get_db():

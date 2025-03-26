@@ -7,6 +7,7 @@ from fastapi.security import OAuth2PasswordBearer
 from fastapi import Depends, HTTPException, status
 from crud import get_user_by_username
 
+
 #Initialize password hashing
 pwd_context = CryptContext(schemes=["bcrypt"],deprecated="auto")
 
