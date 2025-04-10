@@ -1,10 +1,20 @@
 import os
 from dotenv import load_dotenv
+from motor.motor_asyncio import AsyncIOMotorClient
 
 load_dotenv()
 
 MONGO_URI = os.getenv("MONGO_URI")
 
-SECRET_KEY = os.getenv("JWT_SECRET", "4cc57978155b0e006c5ecdcc08e83c9a20cfa426019a4c46772c0c633a465a8")
+# Initialize MongoDB client
+mongo_client = AsyncIOMotorClient(MONGO_URI)
+db = mongo_client.get_default_database()
+
+async def close_mongo_connection():
+    """Close the MongoDB connection."""
+    if mongo_client:
+        mongo_client.close()
+
+SECRET_KEY = os.getenv ("JWT_SECRET")
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
